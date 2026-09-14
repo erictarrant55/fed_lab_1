@@ -1,3 +1,42 @@
-.box-header {
+header {
+    background-color: #d0cece;
+    color: hwb(0 6% 94%);
+    text-align: center;
+    padding: 30px;
+    padding-left: 15px;
+    font-family: 'Roboto', Arial, sans-serif;
     border: 2px solid #333333;
+    height: 200px;
+    margin: auto;
+}
+
+nav {
+    margin-top: -100px;
+    border: px solid #333333;
+    margin-top: 30px;
+    font-size: 20px;
+    margin: auto;
+    border: 1px solid #333333;
+    max-width: 1000px;
+}
+
+img {
+    margin-right: 1000px;
+    margin-top: -81px;
+    margin-left: -63px;
+    width: auto
+}
+
+
+h2 {
+    font-size: 35px;
+    margin: auto;
+    margin-top: 30px
+}
+
+h3 {
+    font-size: 30px;
+    margin: auto;
+    border: 2px solid #333333;
+    margin-top: 30px
 }
