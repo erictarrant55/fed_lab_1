@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    background-color: #333;
+    padding: 0.5rem 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+
+}
+
+nav ul li a:hover {
+    color: #ddd;
+}
+
+a {
+    text-decoration: none;
+    color: #0077cc;
+
+}
+
+a:hover {
+    color: #f00;
+    text-decoration: underline
+}
+
+main {
+    margin: 2rem auto;
+    width: 80%;
+}
+
+main p {
+    text-indent: 1rem;
+
+}
+
+/* The # is used for id values contained in the HTML */
+section#attractions,
+section#events,
+section#dining {
+    background-colour: #f9f9f9;
+    padding: 1.25rem;
+    border: 2px solid #444;
+    margin-bottom: 1.25rem;
+    box-shadow: 2px 2px 4px #333;
+}
+
+section h2 {
+    color: #333;
+    border-bottom: 2px solid #444;
+    padding-bottom: 0.625rem;
+    text-shadow: 1px 1px 2px #444
+}
+
+section#attractions img {
+    width: 50%;
+}
+
+/*the . is used for class values contained in the HTML 
+  the advantage of classes is their reusability*/
+/*.main-content {
+        } */
+
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
