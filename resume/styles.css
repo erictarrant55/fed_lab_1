@@ -1,22 +1,42 @@
 body {
-    background-color: #73BFB8;
+    background-color: #3DA5D9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
     font-size: 35px;
     border: 2px solid #333333;
-    /* background-color: #3DA5D9; */
+    width: fit-content;
+    background-color: #f0f1f2;
 
 }
 
 a {
     font-size: 25px;
     text-decoration: none;
-    color: #2364AA;
+    color: #f0f1f2;
+    text-decoration: underline;
 }
 
 h2 {
     font-size: 20px;
     border: 2px solid #333333;
+    background-color: #f0f1f2;
+}
 
+h3 {
+    border: 2px solid #333333;
+    width: fit-content;
+
+
+}
+
+p3 {
+    text-decoration: underline;
 }
