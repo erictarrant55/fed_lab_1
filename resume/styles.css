@@ -1,0 +1,22 @@
+body {
+    background-color: #73BFB8;
+}
+
+h1 {
+    font-size: 35px;
+    border: 2px solid #333333;
+    /* background-color: #3DA5D9; */
+
+}
+
+a {
+    font-size: 25px;
+    text-decoration: none;
+    color: #2364AA;
+}
+
+h2 {
+    font-size: 20px;
+    border: 2px solid #333333;
+
+}
