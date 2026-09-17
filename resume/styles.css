@@ -1,7 +1,9 @@
 body {
-    background-color: #3DA5D9;
+    background-color: #98a8ae;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
 
 .parent {
     display: flex;
@@ -14,29 +16,33 @@ h1 {
     border: 2px solid #333333;
     width: fit-content;
     background-color: #f0f1f2;
+    display: flex;
 
 }
 
 a {
     font-size: 25px;
     text-decoration: none;
-    color: #f0f1f2;
+    color: #2364AA;
     text-decoration: underline;
+    display: flex;
+
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 18px;
     border: 2px solid #333333;
     background-color: #f0f1f2;
+    display: flex;
+
 }
+
 
 h3 {
     border: 2px solid #333333;
     width: fit-content;
+    background-color: #f0f1f2;
+    display: flex;
 
 
-}
-
-p3 {
-    text-decoration: underline;
 }
