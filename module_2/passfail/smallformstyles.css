@@ -1,0 +1,75 @@
+body {
+	font-family: Raleway, Helvetica, sans-serif;
+}
+
+#passfail {
+	width: 80%;
+	margin: 20px auto;
+	padding: 5px;
+	text-align: center;
+	box-sizing: border-box;
+	box-shadow: 3px 3px 8px #000;
+}
+
+ol {
+	list-style: none;
+}
+
+ol li {
+	display: flex;
+	padding: 5px;
+}
+
+ol li:last-of-type {
+	display: block;
+	flex-wrap: wrap;
+}
+
+label {
+	flex: 1;
+	font-size: 1.2em;
+	display: inline-block;
+	text-align: left;
+	height: 20px;
+}
+
+input {
+	flex: 2;
+	border-bottom: 1px solid #000;
+	border-right: 1px solid #000;
+	height: 20px;
+}
+
+button {
+	width: 5rem;
+	background-color: #000;
+	color: #fff;
+	font-size: 1.05em;
+}
+
+table {
+	width: 80%;
+	margin: 20px auto;
+	box-shadow: 3px 3px 8px #000;
+	text-align: center;
+}
+
+table tr {
+	background-color: #fff;
+	color: #000;
+	height: 30px;
+}
+
+table tr:nth-child(2n + 1) td {
+	border: 1px solid #000;
+}
+
+footer {
+	width: 60%;
+	margin: 20px auto;
+}
+
+#clearbutton {
+	margin: 0px auto;
+	display: none;
+}

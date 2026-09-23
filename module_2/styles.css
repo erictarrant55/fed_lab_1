@@ -1,0 +1,8 @@
+.paragraph-style {
+	font-style: italic;
+	margin: 0.8rem 0;
+}
+
+.highlight {
+	background-color: lightyellow;
+}
