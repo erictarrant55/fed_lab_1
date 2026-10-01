@@ -44,9 +44,33 @@ You win.
 
 The player goes down the stairs
 
+You go down the stairs and see and android.
+
+Do you run away or sneak around it?
+
 # Decision 1
 
+If you run away the android will run after you.
+But you manage to hide somewhere.
+Do you continue to hid or run away?
+
+You sneak around the android. This android most likely is not very smart,
+because you just crouched around it and it did not see you. Wow good job.
+You reach the bottom of the building, go outside or stay?
+
 # Decision 2
+
+If you continue to hid, the android finds you and turns you into an android.
+You lose.
+If you run away you reach the spot you start in.
+You neither win or lose.
+
+If you stay the android finds you and turns you into an android,
+you lose.
+
+If you go outside, you see that there is no one around. So you continue to walk
+for a very long time without anyone attacking you.
+You win.
 
 ## Path 3
 
