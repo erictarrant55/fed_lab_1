@@ -126,3 +126,153 @@ const story = {
             }
         ]
     },
+
+    "stay-stay": {
+        text: "Player stays again, the noise you heard earlier gets really loud but then it just goes away. You choose to stay again. You win I think?",
+        choices: [
+            {
+                text: "Player stays",
+                nextState: "stay-stay-stay"
+            },
+            {
+                text: "Player leaves",
+                nextState: "stay-leave"
+            }
+        ]
+    },
+    "stay-stay-stay": {
+        text: "if you stay where you are nothing really changes, but you hear something in the distance. do you stay or leave?",
+        choices: [
+            {
+                text: "Player stays",
+                nextState: "stay-stay-stay"
+            },
+            {
+                text: "Player leaves",
+                nextState: "stay-leave"
+            }
+        ]
+    },
+    "stay-leave": {
+        text: "Player deicides to leave but sadly gets attacked by an android and then turned into an android. You lose.",
+        choices: []
+    },
+
+    "stay": {
+        text: "Player decides to stay... really dude? Continue to stay or go to bed?",
+        choices: [
+            {
+                text: "Player goes to bed.",
+                nextState: "stay-bed"
+            },
+            {
+                text: "Player stays",
+                nextState: "stay-stay"
+            }
+        ]
+    },
+    "stay-bed": {
+        text: "player goes to bed, they awake in a completely different location. It is some sort of forest. Do you stay where you are or walk further in the forest?",
+        choices: [
+            {
+                text: "Player stays",
+                nextState: "stay-bed-stay"
+            },
+            {
+                text: "Player walks further",
+                nextState: "stay-bed-walk"
+            }
+        ]
+    },
+
+    "stay-bed-walk": {
+        text: "Player stays and does not go further into the forest. You then get teleported back to the building. You neither win or lose.",
+        choices: []
+    },
+    "stay-bed-stay": {
+        text: "Player walks into the forest, you begin to heard a loud bunch of sounds behind you. Its over 1000 androids running at you. Good luck out running them, you lose.",
+        choices: []
+    }
+};
+
+
+/**
+ * Displays the story state.
+ */
+function renderQuestion() {
+
+    const state = story[currentState];
+
+    questionElement.textContent = state.text;
+
+    answersElement.innerHTML = "";
+
+    progressElement.textContent =
+        `Current location: ${currentState}`;
+
+    if (state.choices.length === 0) {
+
+        const endingMessage = document.createElement("p");
+
+        endingMessage.textContent =
+            "Your adventure has reached an ending.";
+
+        endingMessage.classList.add("ending");
+
+        answersElement.appendChild(endingMessage);
+
+        return;
+    }
+
+    state.choices.forEach(function (choice) {
+
+        addAnswerButton(
+            choice.text,
+            choice.nextState
+        );
+
+    });
+}
+
+
+/**
+ * Creates a button for a choice.
+ */
+function addAnswerButton(text, nextState) {
+
+    const button = document.createElement("button");
+
+    button.textContent = text;
+
+    button.type = "button";
+
+    button.addEventListener("click", function () {
+
+        currentState = nextState;
+
+        renderQuestion();
+
+    });
+
+    answersElement.appendChild(button);
+}
+
+
+/**
+ * Restarts the game.
+ */
+function restartGame() {
+
+    currentState = "start";
+
+    renderQuestion();
+}
+
+
+restartButton.addEventListener(
+    "click",
+    restartGame
+);
+
+
+renderQuestion(); 
