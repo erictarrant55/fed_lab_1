@@ -4,33 +4,73 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adventure Game</title>
+
+    <title>Dystopian World - Adventure Game</title>
+
     <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <div id="game-container">
-        <h1>Dystopian World</h1>
-        <div id="question-container">
-            <p id="question">Your adventure begins now...</p>
-        </div>
-        <h2>
-            Story:
-        </h2>
-        <p2>
-            Set 1000 years in the future from 2026 in the year 3026. Welcome to a dystopian
-            world where humans are no longer and every so called "Living being" is an some
-            humanoid like android. However, hiding in the city which
-            used to be known as Seattle, there is one last real human-being.
-            The player in the story is this last human, and is trying to survive from these
-            androids who have eradicated the human race.
-        </p2>
-        <ul id="answers">
+
+    <main id="game-container">
+
+        <header>
+            <h1>Dystopian World</h1>
+
+            <p id="progress" aria-live="polite">
+                Your adventure begins...
+            </p>
+        </header>
+
+        <section id="question-container" aria-labelledby="question">
+
+            <p id="question">
+                Your adventure begins now...
+            </p>
+
+        </section>
+
+        <section id="story">
+
+            <h2>Story</h2>
+
+            <p>
+                Set 1000 years in the future from 2026, in the year 3026.
+                Welcome to a dystopian world where humans are no longer
+                around and every so-called "living being" is some kind of
+                humanoid-like android.
+            </p>
+
+            <p>
+                However, hiding in the city which used to be known as
+                Seattle, there is one last real human being.
+            </p>
+
+            <p>
+                The player in the story is this last human and is trying
+                to survive from these androids who have eradicated the
+                human race.
+            </p>
+
+        </section>
+
+        <section id="answers" aria-label="Adventure choices">
             <!-- Answer buttons will be injected here by JavaScript -->
-        </ul>
-        <button id="next-btn" onclick="nextQuestion()">Next</button>
-    </div>
+        </section>
+
+        <section id="controls">
+
+            <button id="restart-btn" type="button">
+                Restart Adventure
+            </button>
+
+        </section>
+
+    </main>
+
     <script src="script.js"></script>
+
 </body>
 
 </html>
+```
