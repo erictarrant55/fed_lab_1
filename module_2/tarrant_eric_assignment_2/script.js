@@ -10,7 +10,7 @@ const restartButton = document.getElementById("restart-btn");
 
 const story = {
     beginning: {
-        text: "The player finds themselves stuck in a large building in the center of the city. There are 3 ways they could go. First way is up the stairs. Second way is down the stairs. Third way is to stay where they're.",
+        text: "Set 1000 years in the future from 2026 in the year 3026. Welcome to a dystopian world where humans are no longer and every so called 'Living being' is an some humanoid like android. However, hiding in the city which used to be known as Seattle, there is one last real human-being. The player in the story is this last human, and is trying to survive from these androids who have eradicated the human race. The player finds themselves stuck in a large building in the center of the city. There are 3 ways they could go. First way is Up the stairs. Second way is down the stairs. Third way is to stay where they're.",
         choices: [
             {
                 text: "Go up the stairs",
@@ -218,9 +218,6 @@ function renderQuestion() {
     if (state.choices.length === 0) {
 
         const endingMessage = document.createElement("p");
-
-        endingMessage.textContent =
-            "Your adventure has reached an ending.";
 
         endingMessage.classList.add("ending");
 
