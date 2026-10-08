@@ -116,15 +116,11 @@ const story = {
         ]
     },
     "downstairs-hide": {
-        text: "Player decides to stay, the android finds you and turns you into an android. You lose.",
+        text: "Player decides to hide, the android finds you and turns you into an android. You lose.",
         choices: []
     },
     "downstairs-run-run": {
         text: "If you run away you reach the spot you start in. You neither win or lose.",
-        choices: []
-    },
-    "downstairs-hide": {
-        text: "If you stay the android finds you and turns you into an android, you lose.",
         choices: []
     },
 
@@ -145,19 +141,6 @@ const story = {
     },
 
     "stay-stay": {
-        text: "Player stays again, the noise you heard earlier gets really loud but then it just goes away. You choose to stay again. You win I think?",
-        choices: [
-            {
-                text: "Stay",
-                nextState: "stay-stay-stay"
-            },
-            {
-                text: "Leave",
-                nextState: "stay-leave"
-            }
-        ]
-    },
-    "stay-stay-stay": {
         text: "if you stay where you are nothing really changes, but you hear something in the distance. do you stay or leave?",
         choices: [
             {
@@ -170,24 +153,29 @@ const story = {
             }
         ]
     },
+    "stay-stay-stay": {
+        text: "if you stay where you are nothing really changes, but you hear even louder in the distance something in the distance. do you stay or leave?",
+        choices: [
+            {
+                text: "Stay",
+                nextState: "stay-stay-stay-stay"
+            },
+            {
+                text: "Leave",
+                nextState: "stay-leave"
+            }
+        ]
+    },
     "stay-leave": {
         text: "Player deicides to leave but sadly gets attacked by an android and then turned into an android. You lose.",
         choices: []
     },
 
-    "stay": {
-        text: "Player decides to stay... really dude? Continue to stay or go to bed?",
-        choices: [
-            {
-                text: "Go to bed",
-                nextState: "stay-bed"
-            },
-            {
-                text: "Stay",
-                nextState: "stay-stay"
-            }
-        ]
+    "stay-stay-stay-stay": {
+        text: "if you stay again the noise you heard earlier gets really loud but then it just goes away. You choose to stay again. You win I think?",
+        choices: []
     },
+
     "stay-bed": {
         text: "player goes to bed, they awake in a completely different location. It is some sort of forest. Do you stay where you are or walk further in the forest?",
         choices: [
@@ -203,11 +191,11 @@ const story = {
     },
 
     "stay-bed-walk": {
-        text: "Player stays and does not go further into the forest. You then get teleported back to the building. You neither win or lose.",
+        text: "Player walks into the forest, you begin to heard a loud bunch of sounds behind you. Its over 1000 androids running at you. Good luck out running them, you lose.",
         choices: []
     },
     "stay-bed-stay": {
-        text: "Player walks into the forest, you begin to heard a loud bunch of sounds behind you. Its over 1000 androids running at you. Good luck out running them, you lose.",
+        text: "Player stays and does not go further into the forest. You then get teleported back to the building. You neither win or lose.",
         choices: []
     }
 };
@@ -280,16 +268,12 @@ function addAnswerButton(text, nextState) {
  */
 function restartGame() {
 
-    currentState = "start";
+    currentState = "beginning";
 
     renderQuestion();
 }
-
-
 restartButton.addEventListener(
     "click",
     restartGame
 );
-
-
 renderQuestion(); 

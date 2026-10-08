@@ -94,6 +94,8 @@ Do you stay where you are or walk further in the forest?
 if you leave then you get attacked by an android.
 you lose.
 
+if you stay where you are nothing really changes, but you hear even louder in the distance something in the distance. do you stay or leave?
+
 if you stay again the noise you heard earlier gets really loud but then it just
 goes away. You choose to stay again.
 
