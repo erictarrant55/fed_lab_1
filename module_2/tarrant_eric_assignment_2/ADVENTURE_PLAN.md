@@ -1,3 +1,6 @@
+__author__ = "Eric Tarrant"
+__version__ = "1.0.0"
+
 ## STORY
 
 Set 1000 years in the future from 2026 in the year 3026. Welcome to a dystopian
