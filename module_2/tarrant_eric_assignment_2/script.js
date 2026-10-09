@@ -1,13 +1,45 @@
-__author__ = "Eric Tarrant"
-__version__ = "1.0.0"
-
+/**
+ * @file Choose you own adventure game set in the year 3026.
+ *       The player is the last human in a city ruled by androids, and moves
+ *       through the story by clicking choice buttons.
+ * @author Eric Tarrant
+ * @version 1.0.0
+ */
 let currentState = "beginning";
 
+/** 
+ * The DOM element that displays the current quiz question text.
+ * @type {HTMLElement | null} 
+ */
 const questionElement = document.getElementById("question");
+/** 
+ * The DOM container element that holds the quiz answer choices.
+ * @type {HTMLElement | null} 
+ */
 const answersElement = document.getElementById("answers");
+/** 
+ * The DOM element that displays the user's quiz progress (e.g., "Question 1 of 10").
+ * @type {HTMLElement | null} 
+ */
 const progressElement = document.getElementById("progress");
+/** 
+ * The button element used to restart the quiz.
+ * @type {HTMLButtonElement | null} 
+ */
 const restartButton = document.getElementById("restart-btn");
 
+
+/**
+ * This is the full tree branch of the story.
+ * Each button pressed takes the player to a new section with all different endings.
+ *
+ * Paths:
+ *  - Upstairs:   door -> talk (win) / attack (lose), or back down (lose)
+ *  - Downstairs: sneak or run, with a mix of wins, losses, and a neutral ending
+ *  - Stay:       go to bed or keep staying, with several endings
+ *
+ * @type {Object<string, StoryState>}
+ */
 const story = {
     beginning: {
         text: "Set 1000 years in the future from 2026 in the year 3026. Welcome to a dystopian world where humans are no longer and every so called 'Living being' is an some humanoid like android. However, hiding in the city which used to be known as Seattle, there is one last real human-being. The player in the story is this last human, and is trying to survive from these androids who have eradicated the human race. The player finds themselves stuck in a large building in the center of the city. There are 3 ways they could go. First way is Up the stairs. Second way is down the stairs. Third way is to stay where they're.",
@@ -201,8 +233,17 @@ const story = {
 };
 
 
+
 /**
  * Displays the story state.
+ *
+ * Updates the story text and the progress, it then clears the old choice
+ * buttons, and then either creates a button for each available choice or,
+ * if the state has an ending, adds an ending message element.
+ *
+ * 
+ *
+ * @returns {void}
  */
 function renderQuestion() {
 
@@ -237,8 +278,15 @@ function renderQuestion() {
 }
 
 
+
 /**
  * Creates a button for a choice.
+ * 
+ * When the button is clicked, the game gets moved to its 'next state'
+ * as well as re-renders the page.
+ * 
+ * @param {*} text 
+ * @param {*} nextState 
  */
 function addAnswerButton(text, nextState) {
 
@@ -261,8 +309,11 @@ function addAnswerButton(text, nextState) {
 
 
 /**
- * Restarts the game.
+ * Restarts the game by resetting to the "beginning" state.
+ *
+ * @returns {void}
  */
+
 function restartGame() {
 
     currentState = "beginning";
