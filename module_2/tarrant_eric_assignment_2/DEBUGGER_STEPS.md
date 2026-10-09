@@ -1,11 +1,13 @@
 __author__ = "Eric Tarrant"
 __version__ = "1.0.0"
 
+/* Some of the lines changed because I added docstrings after **/
+
 # Debugging Analysis
 
 ## Breakpoint 1
 
-I put a breakpoint on line 209:
+I put a breakpoint on line 209 (after adding docstrings it line 250):
 
 const state = story[currentState];
 
@@ -13,7 +15,8 @@ It is an important breakpoint because the game determines which part of the stor
 
 ## Breakpoint 2
 
-I put a breakpoint on line 253:
+I put a breakpoint on line 253 (after adding docstrings it line 301):
+:
 
 currentState = nextState;
 
@@ -21,7 +24,7 @@ I put the breakpoint there because in this part of the program it changes the st
 
 ## Breakpoint 3
 
-The last breakpoint is at line 211:
+The last breakpoint is at line 211 (after adding docstrings it line 252):
 
 questionElement.textContent = state.text;
 
