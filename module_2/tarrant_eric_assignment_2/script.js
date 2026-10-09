@@ -8,22 +8,22 @@
 let currentState = "beginning";
 
 /** 
- * The DOM element that displays the current quiz question text.
+ * The DOM element that displays the current question text.
  * @type {HTMLElement | null} 
  */
 const questionElement = document.getElementById("question");
 /** 
- * The DOM container element that holds the quiz answer choices.
+ * The DOM container element that holds the answer choices.
  * @type {HTMLElement | null} 
  */
 const answersElement = document.getElementById("answers");
 /** 
- * The DOM element that displays the user's quiz progress (e.g., "Question 1 of 10").
+ * The DOM element that displays the user's progress (e.g., "Question 1 of 10").
  * @type {HTMLElement | null} 
  */
 const progressElement = document.getElementById("progress");
 /** 
- * The button element used to restart the quiz.
+ * The button element used to restart the game.
  * @type {HTMLButtonElement | null} 
  */
 const restartButton = document.getElementById("restart-btn");
@@ -131,6 +131,10 @@ const story = {
     },
     "downstairs-sneak-stay": {
         text: "Player decides to stay, the android finds you and turns you into an android. You lose.",
+        choices: []
+    },
+    "downstairs-run-outside": {
+        text: "You see that there is no one around. So you continue to walk for a very long time without anyone attacking you. You win.",
         choices: []
     },
 
