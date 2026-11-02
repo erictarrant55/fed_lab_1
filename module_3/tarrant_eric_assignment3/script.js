@@ -28,8 +28,8 @@ console.log(validate)
 const formHasErrors = () => {
     let errorFlag = false
 
-    const requiredTextFields = ["eventRegistrationForm", "nameError",
-        "emailError, ageError "]
+    const requiredTextFields = ["name", "email",
+        "genre_of_drummer, band_name", "favorite_drummer"]
 
     //	Loop through the text fields and check to see the user entered a value
     for (const field of requiredTextFields) {

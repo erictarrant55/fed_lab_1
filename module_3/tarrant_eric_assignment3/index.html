@@ -16,50 +16,63 @@
         </div>
     </header>
 
-    <main>
+    <main id="wrapper">
         <div class="form-container">
             <form action="#" method="post">
 
                 <fieldset>
                     <legend>Your Details</legend>
                     <ol>
+                        <div class="formfield">
+                            <li>
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" autofocus required>
+                                <div class="name_error" id="name_error">* Please enter your full name.</div>
+                            </li>
+                        </div>
+                        <div class="formfield">
+                            <li>
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                                <div class="email_error" id="email_error">* Please enter your email.</div>
+                            </li>
+                        </div>
                         <li>
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" autofocus required>
-                        </li>
-
-                        <li>
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </li>
-
-                        <li>
-                            <label for="genreofdrummer">What genre of drummer are you?</label>
-                            <select name="genreofdrummer" id="genreofdrummer">
+                            <label for="genre_of_drummer">What genre of drummer are you?</label>
+                            <select name="genre_of_drummer" id="genre_of_drummer">
                                 <option value="RO">Rock</option>
                                 <option value="JA">Jazz</option>
                                 <option value="ME">Metal</option>
                                 <option value="FU">Funk</option>
                                 <option value="LA">Latin</option>
                             </select>
-                        </li>
+                            <div class="error" id="genre_error">* Please choose your preferred genre.</div>
 
-                        <li>
-                            <label for="bandname">Band Name</label>
-                            <input type="text" id="bandname" name="bandname">
                         </li>
-
-                        <li>
-                            <label for="favoritedrummer">Favorite Drummer</label>
-                            <input type="text" id="favoritedrummer" name="favoritedrummer"
-                                placeholder="e.g., Neil Peart" required>
-                        </li>
+                        <div class="formfield">
+                            <li>
+                                <label for="band_name">Band Name</label>
+                                <input type="text" id="band_name" name="band_name">
+                                <div class="band_name_error" id="band_name_error">* Please enter your band name.</div>
+                            </li>
+                        </div>
+                        <div class="formfield">
+                            <li>
+                                <label for="favoritedrummer">Favorite Drummer</label>
+                                <input type="text" id="favorite_drummer" name="favorite_drummer"
+                                    placeholder="e.g., Neil Peart" required>
+                                <div class="fav_drummer_error" id="fav_drummer_error">* Please enter your favorite
+                                    drummer.</div>
+                            </li>
+                        </div>
                     </ol>
                 </fieldset>
 
                 <fieldset>
                     <legend>Why did you become a drummer?</legend>
                     <textarea id="message" name="message" rows="4" placeholder="Type your message here"></textarea>
+                    <div class="error" id="become_a_drummer_error">* Please explain why you became a drummer.</div>
+
                 </fieldset>
 
                 <fieldset>
@@ -89,6 +102,8 @@
                             <input type="radio" id="sonor" name="shellType" value="Sonor">
                             <label for="sonor">Sonor</label>
                         </li>
+                        <div class="error" id="drum_shell_error">* Please select an option.</div>
+
                     </ol>
                 </fieldset>
 
@@ -115,6 +130,7 @@
                             <input type="radio" id="paiste" name="cymbalBrand" value="Paiste">
                             <label for="paiste">Paiste</label>
                         </li>
+                        <div class="error" id="cymbal_company_error">* Please select an option.</div>
                     </ol>
                 </fieldset>
 
@@ -141,6 +157,7 @@
                             <input type="checkbox" id="clapstack" name="cymbalType[]" value="Clap Stack">
                             <label for="clapstack">Clap Stack</label>
                         </li>
+                        <div class="error" id="cymbal_error">* Please select at least 1 option.</div>
                     </ol>
                 </fieldset>
 
@@ -148,6 +165,7 @@
                     <legend>Pickup Date</legend>
                     <label for="pickup-date">Choose a date to pick up the drum kit:</label>
                     <input type="date" id="pickup-date" name="pickup" min="2026-10-26" max="2026-12-31">
+                    <div class="error" id="date_error">* Please select a date.</div>
                 </fieldset>
 
                 <div class="submit-button">
