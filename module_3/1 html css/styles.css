@@ -1,0 +1,117 @@
+/* Form Styles */
+
+/*CSS Reset */
+html,
+body,
+form,
+fieldset,
+legend,
+ol,
+li {
+	margin: 0;
+	padding: 0;
+
+}
+
+body {
+	background-image: url('images/background.jpg');
+	color: #111;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	padding: 20px;
+}
+
+form#payment {
+	background-color: #9cbc2c;
+	border-radius: 5px;
+	padding: 20px;
+	width: 60%;
+	margin: 0px auto;
+}
+
+form#payment fieldset {
+	border: 0;
+	margin-bottom: 20px;
+}
+
+form#payment fieldset:last-of-type {
+	margin-bottom: 0;
+}
+
+form#payment legend {
+	color: #384313;
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	text-shadow: 1px, 1px, 1px #444;
+}
+
+form#payment fieldset fieldset legend {
+	color: #111;
+	font-size: 13px;
+	font-weight: normal;
+	padding-bottom: 0;
+}
+
+form#payment ol ol {
+	display: flex;
+
+}
+
+form#payment ol ol li {
+	background: none;
+	border: none;
+}
+
+form#payment fieldset fieldset label {
+	background: none no-repeat left 50%;
+	line-height: 20px;
+	padding-left: 30px;
+	width: auto;
+}
+
+form#payment ol li {
+	background: #b9cf6a;
+	border: 2px solid #e3ebc3;
+	border-radius: 5px;
+	line-height: 30px;
+	list-style: none;
+	padding: 5px 10px;
+	margin-bottom: 2px;
+}
+
+form#payment label {
+	float: left;
+	font-size: 13px;
+	width: 70px;
+}
+
+/*Radio button label styles*/
+form#payment label[for='visa'] {
+	background-image: url('images/visa.gif');
+}
+
+form#payment label[for='amex'] {
+	background-image: url('images/amex.gif');
+}
+
+form#payment label[for='mastercard'] {
+	background-image: url('images/mastercard.gif');
+}
+
+form#payment fieldset fieldset label:hover {
+	cursor: pointer;
+}
+
+form#payment input:not([type='radio']),
+form#payment textarea {
+	background: #fff;
+	border: none;
+	border-radius: 3px;
+	font:
+		italic 13px Georgia,
+		'Times New Roman',
+		Times,
+		serif;
+	padding: 5px;
+	width: 220px;
+}

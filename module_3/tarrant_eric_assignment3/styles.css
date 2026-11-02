@@ -1,0 +1,59 @@
+/* CSS Reset */
+html,
+body,
+form,
+fieldset,
+legend,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+    background-color: #f7f9fa;
+    color: #111;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    padding-top: 0.5rem;
+}
+
+.form-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 95%;
+    height: 150px;
+    font-size: 16px;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+
+}

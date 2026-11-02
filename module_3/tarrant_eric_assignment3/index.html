@@ -4,136 +4,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 3</title>
+    <title>Build Your Dream Drum Set</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<header>Build Your Dream Drum Set</header>
 
 <body>
-    <form action="#" method="post">
-        <fieldset>
-            <legend>Your Details</legend>
-            <ol>
-                <li>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" autofocus />
-                </li>
-                <li>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" />
-                </li>
-                <li>
-                    <label for="genreofdrummer">What genre of drummer are you?</label>
-                    <select name="genreofdrummer" id="genreofdrummer">
-                        <option value="RO">Rock</option>
-                        <option value="JA">Jazz</option>
-                        <option value="ME">Metal</option>
-                        <option value="FU">Funk</option>
-                        <option value="LA">Latin</option>
-                    </select>
-                </li>
-                <li>
-                    <label for="bandname">Band Name</label>
-                    <input type="text" id="bandname" name="bandname" />
-                </li>
-                <li>
-                    <label for="favoritedrummer">Favorite Drummer</label>
-                    <input type="text" name="favoritedrummer" placeholder="e.g., Neil Peart" required>
-                </li>
-            </ol>
-        </fieldset>
-        </fieldset>
-        <label for="message">Why did you become a drummer?:</label>
-        <textarea id="message" name="message" rows="4" cols="50" placeholder="Type your message here"></textarea>
-        <fieldset>
-            <fieldset>
-                <legend>Drum Shell Brand</legend>
-                <ol>
-                    <li>
-                        <input type="radio" id="pearl" name="shellType" />
-                        <label for="pearl">Pearl</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="Tama" name="shellType" />
-                        <label for="tama">Tama</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="Yamaha" name="shellType" />
-                        <label for="yamaha">Yamaha</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="ludwig" name="shellType" />
-                        <label for="ludwig">Ludwig</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="sjc" name="shellType" />
-                        <label for="sjc">SJC</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="sonor" name="shellType" />
-                        <label for="sonor">Sonor</label>
-                    </li>
-                </ol>
-            </fieldset>
-            <fieldset>
-                <legend>Cymbal Brand</legend>
-                <ol>
-                    <li>
-                        <input type="radio" id="Zildjian" name="cymbalBrand" />
-                        <label for="zildjian">Zildjian</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="Sabian" name="cymbalBrand" />
-                        <label for="sabian">Sabian</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="Meinl" name="cymbalBrand" />
-                        <label for="meinl">Meinl</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="Istanbul" name="cymbalBrand" />
-                        <label for="istanbul">Istanbul</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="Paiste" name="cymbalBrand" />
-                        <label for="paiste">Paiste</label>
-                    </li>
 
-                </ol>
-            </fieldset>
+    <header>
+        <div class="container">
+            <h1>Build Your Dream Drum Set</h1>
+        </div>
+    </header>
 
-            <fieldset>
-                <legend>Cymbal Type</legend>
-                <ol>
-                    <li>
-                        <input type="checkbox" id="Crash" name="cymbalType" />
-                        <label for="crash">Crash</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="Ride" name="cymbalType" />
-                        <label for="ride">Ride</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="Splash" name="cymbalType" />
-                        <label for="splash">Splash</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="China" name="cymbalType" />
-                        <label for="china">China</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="ClapStack" name="cymbalType" />
-                        <label for="clapstack">Clap Stack</label>
-                    </li>
-                </ol>
-            </fieldset>
-            <fieldset>
-                <label for="pickup-date">Choose a date to pick up the drum kit:</label>
-                <input type="date" id="pickup-date" name="pickup" value="2026-10-26" min="2026-01-01" max="2026-12-31">
-            </fieldset>
-            <fieldset>
-                <button type="submit">Buy it!</button>
-            </fieldset>
-    </form>
+    <main>
+        <div class="form-container">
+            <form action="#" method="post">
+
+                <fieldset>
+                    <legend>Your Details</legend>
+                    <ol>
+                        <li>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" autofocus required>
+                        </li>
+
+                        <li>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </li>
+
+                        <li>
+                            <label for="genreofdrummer">What genre of drummer are you?</label>
+                            <select name="genreofdrummer" id="genreofdrummer">
+                                <option value="RO">Rock</option>
+                                <option value="JA">Jazz</option>
+                                <option value="ME">Metal</option>
+                                <option value="FU">Funk</option>
+                                <option value="LA">Latin</option>
+                            </select>
+                        </li>
+
+                        <li>
+                            <label for="bandname">Band Name</label>
+                            <input type="text" id="bandname" name="bandname">
+                        </li>
+
+                        <li>
+                            <label for="favoritedrummer">Favorite Drummer</label>
+                            <input type="text" id="favoritedrummer" name="favoritedrummer"
+                                placeholder="e.g., Neil Peart" required>
+                        </li>
+                    </ol>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Why did you become a drummer?</legend>
+                    <textarea id="message" name="message" rows="4" placeholder="Type your message here"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Drum Shell Brand</legend>
+                    <ol>
+                        <li>
+                            <input type="radio" id="pearl" name="shellType" value="Pearl">
+                            <label for="pearl">Pearl</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tama" name="shellType" value="Tama">
+                            <label for="tama">Tama</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="yamaha" name="shellType" value="Yamaha">
+                            <label for="yamaha">Yamaha</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="ludwig" name="shellType" value="Ludwig">
+                            <label for="ludwig">Ludwig</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="sjc" name="shellType" value="SJC">
+                            <label for="sjc">SJC</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="sonor" name="shellType" value="Sonor">
+                            <label for="sonor">Sonor</label>
+                        </li>
+                    </ol>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Cymbal Brand</legend>
+                    <ol>
+                        <li>
+                            <input type="radio" id="zildjian" name="cymbalBrand" value="Zildjian">
+                            <label for="zildjian">Zildjian</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="sabian" name="cymbalBrand" value="Sabian">
+                            <label for="sabian">Sabian</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="meinl" name="cymbalBrand" value="Meinl">
+                            <label for="meinl">Meinl</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="istanbul" name="cymbalBrand" value="Istanbul">
+                            <label for="istanbul">Istanbul</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="paiste" name="cymbalBrand" value="Paiste">
+                            <label for="paiste">Paiste</label>
+                        </li>
+                    </ol>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Cymbal Type</legend>
+                    <ol>
+                        <li>
+                            <input type="checkbox" id="crash" name="cymbalType[]" value="Crash">
+                            <label for="crash">Crash</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="ride" name="cymbalType[]" value="Ride">
+                            <label for="ride">Ride</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="splash" name="cymbalType[]" value="Splash">
+                            <label for="splash">Splash</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="china" name="cymbalType[]" value="China">
+                            <label for="china">China</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="clapstack" name="cymbalType[]" value="Clap Stack">
+                            <label for="clapstack">Clap Stack</label>
+                        </li>
+                    </ol>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Pickup Date</legend>
+                    <label for="pickup-date">Choose a date to pick up the drum kit:</label>
+                    <input type="date" id="pickup-date" name="pickup" min="2026-10-26" max="2026-12-31">
+                </fieldset>
+
+                <div class="submit-button">
+                    <button type="submit">Build My Drum Kit!</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Eric Tarrant. All rights reserved. (I will find you if you steal)</p>
+    </footer>
+
+
 </body>
 
 </html>
