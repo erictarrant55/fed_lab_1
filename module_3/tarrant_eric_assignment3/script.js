@@ -34,26 +34,37 @@ const formHasErrors = () => {
     const requiredTextFields = ["name", "email",
         "genre_of_drummer", "band_name", "favorite_drummer"]
 
-    //	Loop through the text fields and check to see the user entered a value
     for (const field of requiredTextFields) {
         let textField = document.getElementById(field)
 
-        //	Determine if the user entered text
         if (!formFieldHasInput(textField)) {
             document.getElementById(field + "_error").style.display = "block"
 
-            //	Determine if this is the first error
             if (!errorFlag) {
                 textField.focus()
             }
 
-            //	Raise the error flag indicating an error
             errorFlag = true
         }
     }
-    console.log(formHasErrors)
-    return errorFlag;
+
+    const drumShell = ["pearl", "tama", "yamaha", "ludwig", "sjc", "sonor"]
+    let drumShellChecked = false
+
+    for (const shellType of drumShell) {
+        if (document.getElementById(shellType).checked) {
+            drumShellChecked = true
+        }
+    }
+
+    if (!drumShellChecked) {
+        document.getElementById("drum_shell_error").style.display = "block"
+        errorFlag = true
+    }
+
+    return errorFlag
 }
+
 const hideAllErrors = () => {
     const errorFields = document.getElementsByClassName("error")
 
