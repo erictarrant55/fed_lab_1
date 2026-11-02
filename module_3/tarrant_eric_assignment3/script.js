@@ -103,7 +103,6 @@ const formHasErrors = () => {
     return errorFlag
 }
 
-
 const hideAllErrors = () => {
     const errorFields = document.getElementsByClassName("error")
 
@@ -118,6 +117,16 @@ const formFieldHasInput = (fieldElement) => {
     }
 
     return true;
+}
+
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
 }
 
 // Attach the listener once the page has loaded
