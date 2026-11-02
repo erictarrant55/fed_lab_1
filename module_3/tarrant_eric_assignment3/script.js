@@ -71,6 +71,19 @@ const formHasErrors = () => {
         errorFlag = true
     }
 
+    const cymbalBrandType = ["crash", "ride", "splash", "china", "clapstack"]
+    let cymbalBrandTypeChecked = false
+
+    for (const cymbalType of cymbalBrandType) {
+        if (document.getElementById(cymbalType).checked) {
+            cymbalBrandTypeChecked = true
+        }
+    }
+
+    if (!cymbalBrandTypeChecked) {
+        document.getElementById("cymbal_error").style.display = "block"
+        errorFlag = true
+    }
     return errorFlag
 }
 
