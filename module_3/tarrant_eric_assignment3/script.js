@@ -1,28 +1,23 @@
-// /*
-//     Drum kit design survey form
-//     October 29, 2026
-//     Eric Tarrant
-//  */
-
+/*
+    Drum kit design survey form
+    October 29, 2026
+    Eric Tarrant
+ */
 
 const validate = (e) => {
-    //	Hides all error elements on the page
+    // Hides all error elements on the page
     hideAllErrors();
 
-    //	Determine if the form has errors
+    // Determine if the form has errors
     if (formHasErrors()) {
-        // 	Prevents the form from submitting
+        // Prevents the form from submitting
         e.preventDefault();
         return false;
     }
 
     return true;
 }
-console.log(validate)
 
-const form = document.getElementById("survey_form");
-
-form.addEventListener("submit", validate);
 /*
  * Does all the error checking for the form.
  *
@@ -59,6 +54,20 @@ const formHasErrors = () => {
 
     if (!drumShellChecked) {
         document.getElementById("drum_shell_error").style.display = "block"
+        errorFlag = true
+    }
+
+    const cymbalCompany = ["zildjian", "sabian", "meinl", "istanbul", "paiste"]
+    let cymbalCompanyChecked = false
+
+    for (const cymbalBrand of cymbalCompany) {
+        if (document.getElementById(cymbalBrand).checked) {
+            cymbalCompanyChecked = true
+        }
+    }
+
+    if (!cymbalCompanyChecked) {
+        document.getElementById("cymbal_company_error").style.display = "block"
         errorFlag = true
     }
 
