@@ -18,6 +18,8 @@ const validate = (e) => {
     return true;
 }
 
+const MIN_WORDS = 50
+const commentsField = document.getElementById("comments")
 /*
  * Does all the error checking for the form.
  *
@@ -84,8 +86,23 @@ const formHasErrors = () => {
         document.getElementById("cymbal_error").style.display = "block"
         errorFlag = true
     }
+    const dateField = document.getElementById("pickup-date")
+
+    if (dateField.value === "" ||
+        dateField.value < dateField.min ||
+        dateField.value > dateField.max) {
+        document.getElementById("date_error").style.display = "block"
+
+        if (!errorFlag) {
+            dateField.focus()
+        }
+
+        errorFlag = true
+    }
+
     return errorFlag
 }
+
 
 const hideAllErrors = () => {
     const errorFields = document.getElementsByClassName("error")

@@ -38,7 +38,7 @@
                         <li class="formfield">
                             <label for="genre_of_drummer">What genre of drummer are you?</label>
                             <select name="genre_of_drummer" id="genre_of_drummer">
-                                <option value="">-- Select a genre --</option>
+                                <option value="">Select a genre</option>
                                 <option value="RO">Rock</option>
                                 <option value="JA">Jazz</option>
                                 <option value="ME">Metal</option>
@@ -64,9 +64,8 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend>Why did you become a drummer?</legend>
+                    <legend>Why did you become a drummer? Optional*</legend>
                     <textarea id="message" name="message" rows="4" placeholder="Type your message here"></textarea>
-                    <div class="error" id="become_a_drummer_error">* Please explain why you became a drummer.</div>
                 </fieldset>
 
                 <fieldset>
@@ -131,23 +130,23 @@
                     <legend>Cymbal Type</legend>
                     <ol>
                         <li>
-                            <input type="checkbox" id="crash" name="cymbalType[]" value="Crash">
+                            <input type="checkbox" id="crash" name="cymbalType" value="Crash">
                             <label for="crash">Crash</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="ride" name="cymbalType[]" value="Ride">
+                            <input type="checkbox" id="ride" name="cymbalType" value="Ride">
                             <label for="ride">Ride</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="splash" name="cymbalType[]" value="Splash">
+                            <input type="checkbox" id="splash" name="cymbalType" value="Splash">
                             <label for="splash">Splash</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="china" name="cymbalType[]" value="China">
+                            <input type="checkbox" id="china" name="cymbalType" value="China">
                             <label for="china">China</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="clapstack" name="cymbalType[]" value="Clap Stack">
+                            <input type="checkbox" id="clapstack" name="cymbalType" value="Clap Stack">
                             <label for="clapstack">Clap Stack</label>
                         </li>
                     </ol>
@@ -162,9 +161,10 @@
                 </fieldset>
 
                 <div class="submit-button">
+                    <button type="reset">Clear Survey</button>
+
                     <button type="submit">Build My Drum Kit!</button>
                 </div>
-
             </form>
         </div>
     </main>
