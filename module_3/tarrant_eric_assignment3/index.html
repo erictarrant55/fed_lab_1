@@ -18,53 +18,48 @@
 
     <main id="wrapper">
         <div class="form-container">
-            <form action="#" method="post">
+            <form method="post" id="survey_form" action="https://httpbin.org/post" novalidate>
 
                 <fieldset>
                     <legend>Your Details</legend>
                     <ol>
-                        <div class="formfield">
-                            <li>
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" autofocus required>
-                                <div class="name_error" id="name_error">* Please enter your full name.</div>
-                            </li>
-                        </div>
-                        <div class="formfield">
-                            <li>
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                                <div class="email_error" id="email_error">* Please enter your email.</div>
-                            </li>
-                        </div>
-                        <li>
+                        <li class="formfield">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" autofocus>
+                            <div class="error" id="name_error">* Please enter your full name.</div>
+                        </li>
+
+                        <li class="formfield">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                            <div class="error" id="email_error">* Please enter your email.</div>
+                        </li>
+
+                        <li class="formfield">
                             <label for="genre_of_drummer">What genre of drummer are you?</label>
                             <select name="genre_of_drummer" id="genre_of_drummer">
+                                <option value="">-- Select a genre --</option>
                                 <option value="RO">Rock</option>
                                 <option value="JA">Jazz</option>
                                 <option value="ME">Metal</option>
                                 <option value="FU">Funk</option>
                                 <option value="LA">Latin</option>
                             </select>
-                            <div class="error" id="genre_error">* Please choose your preferred genre.</div>
-
+                            <div class="error" id="genre_of_drummer_error">* Please choose your preferred genre.</div>
                         </li>
-                        <div class="formfield">
-                            <li>
-                                <label for="band_name">Band Name</label>
-                                <input type="text" id="band_name" name="band_name">
-                                <div class="band_name_error" id="band_name_error">* Please enter your band name.</div>
-                            </li>
-                        </div>
-                        <div class="formfield">
-                            <li>
-                                <label for="favoritedrummer">Favorite Drummer</label>
-                                <input type="text" id="favorite_drummer" name="favorite_drummer"
-                                    placeholder="e.g., Neil Peart" required>
-                                <div class="fav_drummer_error" id="fav_drummer_error">* Please enter your favorite
-                                    drummer.</div>
-                            </li>
-                        </div>
+
+                        <li class="formfield">
+                            <label for="band_name">Band Name</label>
+                            <input type="text" id="band_name" name="band_name">
+                            <div class="error" id="band_name_error">* Please enter your band name.</div>
+                        </li>
+
+                        <li class="formfield">
+                            <label for="favorite_drummer">Favorite Drummer</label>
+                            <input type="text" id="favorite_drummer" name="favorite_drummer"
+                                placeholder="e.g., Neil Peart">
+                            <div class="error" id="favorite_drummer_error">* Please enter your favorite drummer.</div>
+                        </li>
                     </ol>
                 </fieldset>
 
@@ -72,7 +67,6 @@
                     <legend>Why did you become a drummer?</legend>
                     <textarea id="message" name="message" rows="4" placeholder="Type your message here"></textarea>
                     <div class="error" id="become_a_drummer_error">* Please explain why you became a drummer.</div>
-
                 </fieldset>
 
                 <fieldset>
@@ -102,9 +96,8 @@
                             <input type="radio" id="sonor" name="shellType" value="Sonor">
                             <label for="sonor">Sonor</label>
                         </li>
-                        <div class="error" id="drum_shell_error">* Please select an option.</div>
-
                     </ol>
+                    <div class="error" id="drum_shell_error">* Please select an option.</div>
                 </fieldset>
 
                 <fieldset>
@@ -130,8 +123,8 @@
                             <input type="radio" id="paiste" name="cymbalBrand" value="Paiste">
                             <label for="paiste">Paiste</label>
                         </li>
-                        <div class="error" id="cymbal_company_error">* Please select an option.</div>
                     </ol>
+                    <div class="error" id="cymbal_company_error">* Please select an option.</div>
                 </fieldset>
 
                 <fieldset>
@@ -157,8 +150,8 @@
                             <input type="checkbox" id="clapstack" name="cymbalType[]" value="Clap Stack">
                             <label for="clapstack">Clap Stack</label>
                         </li>
-                        <div class="error" id="cymbal_error">* Please select at least 1 option.</div>
                     </ol>
+                    <div class="error" id="cymbal_error">* Please select at least 1 option.</div>
                 </fieldset>
 
                 <fieldset>
@@ -180,7 +173,7 @@
         <p>&copy; 2026 Eric Tarrant. All rights reserved. (I will find you if you steal)</p>
     </footer>
 
-
+    <script src="script.js" defer></script>
 </body>
 
 </html>

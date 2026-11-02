@@ -1,10 +1,11 @@
 // /*
-//     Beer League Hockey Registration
+//     Drum kit design survey form
 //     October 29, 2026
 //     Eric Tarrant
 //  */
 
-const validate = (event) => {
+
+const validate = (e) => {
     //	Hides all error elements on the page
     hideAllErrors();
 
@@ -19,7 +20,9 @@ const validate = (event) => {
 }
 console.log(validate)
 
+const form = document.getElementById("survey_form");
 
+form.addEventListener("submit", validate);
 /*
  * Does all the error checking for the form.
  *
@@ -29,7 +32,7 @@ const formHasErrors = () => {
     let errorFlag = false
 
     const requiredTextFields = ["name", "email",
-        "genre_of_drummer, band_name", "favorite_drummer"]
+        "genre_of_drummer", "band_name", "favorite_drummer"]
 
     //	Loop through the text fields and check to see the user entered a value
     for (const field of requiredTextFields) {
@@ -51,3 +54,23 @@ const formHasErrors = () => {
     console.log(formHasErrors)
     return errorFlag;
 }
+const hideAllErrors = () => {
+    const errorFields = document.getElementsByClassName("error")
+
+    for (const field of errorFields) {
+        field.style.display = "none"
+    }
+}
+
+const formFieldHasInput = (fieldElement) => {
+    if (fieldElement.value == null || fieldElement.value.trim() == "") {
+        return false;
+    }
+
+    return true;
+}
+
+// Attach the listener once the page has loaded
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("survey_form").addEventListener("submit", validate);
+});

@@ -22,6 +22,11 @@ body {
     box-sizing: border-box;
 }
 
+.error {
+    display: none;
+    color: red;
+}
+
 fieldset {
     margin-bottom: 20px;
     padding-top: 0.5rem;
