@@ -18,8 +18,7 @@ const validate = (e) => {
     return true;
 }
 
-const MIN_WORDS = 50
-const commentsField = document.getElementById("message")
+
 /*
  * Does all the error checking for the form.
  *
@@ -44,7 +43,19 @@ const formHasErrors = () => {
             errorFlag = true
         }
     }
+    const regex = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+    let emailValue = document.getElementById("email").value
 
+    if (!regex.test(emailValue)) {
+        document.getElementById("email_error").style.display = "block"
+
+        if (!errorFlag) {
+            email.focus()
+            email.select()
+        }
+
+        errorFlag = true
+    }
     const drumShell = ["pearl", "tama", "yamaha", "ludwig", "sjc", "sonor"]
     let drumShellChecked = false
 
