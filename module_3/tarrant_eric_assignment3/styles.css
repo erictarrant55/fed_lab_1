@@ -27,6 +27,17 @@ body {
     color: red;
 }
 
+button:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: #3c3b3b;
+}
+
 fieldset {
     margin-bottom: 20px;
     padding-top: 0.5rem;

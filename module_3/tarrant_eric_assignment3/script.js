@@ -19,7 +19,7 @@ const validate = (e) => {
 }
 
 const MIN_WORDS = 50
-const commentsField = document.getElementById("comments")
+const commentsField = document.getElementById("message")
 /*
  * Does all the error checking for the form.
  *
