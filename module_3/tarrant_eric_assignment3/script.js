@@ -10,12 +10,14 @@ const validate = (e) => {
 
     // Determine if the form has errors
     if (formHasErrors()) {
+        console.log("Validation failed");
         // Prevents the form from submitting
         e.preventDefault();
         return false;
     }
-
+    console.log("Validation passed");
     return true;
+
 }
 
 
@@ -28,12 +30,13 @@ const formHasErrors = () => {
     let errorFlag = false
 
     const requiredTextFields = ["name", "email",
-        "genre_of_drummer", "band_name", "favorite_drummer"]
+        "band_name", "favorite_drummer"]
 
     for (const field of requiredTextFields) {
         let textField = document.getElementById(field)
 
         if (!formFieldHasInput(textField)) {
+            console.log("Missing input:", field);
             document.getElementById(field + "_error").style.display = "block"
 
             if (!errorFlag) {
@@ -43,8 +46,12 @@ const formHasErrors = () => {
             errorFlag = true
         }
     }
+
     const regex = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
-    let emailValue = document.getElementById("email").value
+    const email = document.getElementById("email")
+    let emailValue = email.value
+
+    console.log("Email tested:", emailValue, "valid:", regex.test(emailValue));
 
     if (!regex.test(emailValue)) {
         document.getElementById("email_error").style.display = "block"
@@ -56,6 +63,7 @@ const formHasErrors = () => {
 
         errorFlag = true
     }
+
     const drumShell = ["pearl", "tama", "yamaha", "ludwig", "sjc", "sonor"]
     let drumShellChecked = false
 
@@ -66,6 +74,7 @@ const formHasErrors = () => {
     }
 
     if (!drumShellChecked) {
+        console.log("No drum shell selected");
         document.getElementById("drum_shell_error").style.display = "block"
         errorFlag = true
     }
@@ -80,6 +89,7 @@ const formHasErrors = () => {
     }
 
     if (!cymbalCompanyChecked) {
+        console.log("No cymbal company selected");
         document.getElementById("cymbal_company_error").style.display = "block"
         errorFlag = true
     }
@@ -94,14 +104,19 @@ const formHasErrors = () => {
     }
 
     if (!cymbalBrandTypeChecked) {
+        console.log("No cymbal type selected");
         document.getElementById("cymbal_error").style.display = "block"
         errorFlag = true
     }
+
     const dateField = document.getElementById("pickup-date")
+
+    console.log("Date check:", dateField.value, "min:", dateField.min, "max:", dateField.max);
 
     if (dateField.value === "" ||
         dateField.value < dateField.min ||
         dateField.value > dateField.max) {
+        console.log("Date invalid");
         document.getElementById("date_error").style.display = "block"
 
         if (!errorFlag) {
@@ -111,6 +126,7 @@ const formHasErrors = () => {
         errorFlag = true
     }
 
+    console.log("formHasErrors result:", errorFlag);
     return errorFlag
 }
 
@@ -142,5 +158,7 @@ function setCookie(name, value, days) {
 
 // Attach the listener once the page has loaded
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("survey_form").addEventListener("submit", validate);
+    const form = document.getElementById("survey_form");
+    console.log("Form found:", form);
+    form.addEventListener("submit", validate);
 });
