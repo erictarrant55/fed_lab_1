@@ -86,7 +86,18 @@ const formHasErrors = () => {
         document.getElementById("drum_shell_error").style.display = "block"
         errorFlag = true
     }
+    const genre = document.getElementById("genre_of_drummer")
 
+    if (genre.value === "") {
+        console.log("No genre selected");
+        document.getElementById("genre_of_drummer_error").style.display = "block"
+
+        if (!errorFlag) {
+            genre.focus()
+        }
+
+        errorFlag = true
+    }
     const cymbalCompany = ["zildjian", "sabian", "meinl", "istanbul", "paiste"]
     let cymbalCompanyChecked = false
 

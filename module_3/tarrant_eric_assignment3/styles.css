@@ -48,22 +48,17 @@ footer {
 }
 
 body {
-    /* Step 1: Link your image */
+
     background-image: url('images/abe_cunningham.jpg');
 
-    /* Step 2: Prevent the image from repeating like a grid */
     background-repeat: no-repeat;
 
-    /* Step 3: Center the image vertically and horizontally */
     background-position: center;
 
-    /* Step 4: Scale the image to cover the entire screen proportionally */
     background-size: cover;
 
-    /* Step 5: Keep the background fixed while scrolling (Optional) */
     background-attachment: fixed;
 
-    /* Fallback color if the image fails to load */
     background-color: #f0f0f0;
 }
 
