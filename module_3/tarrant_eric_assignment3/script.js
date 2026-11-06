@@ -3,15 +3,16 @@
     October 29, 2026
     Eric Tarrant
  */
+
 /**
- * Submit event handler that validates the survey form.
- * Hides any previously shown errors, then runs all validation checks.
- * If any check fails, the form submission is cancelled.
- *
- * @param { SubmitEvent } - The form's submit event.
- * @returns { boolean } `true` if the form is valid and may be submitted,
- * `false` if validation failed and submission was prevented.
- */
+* Submit event handler that validates the survey form.
+* Hides any previously shown errors, then runs all validation checks.
+* If any check fails, the form submission is cancelled.
+*
+* @param { SubmitEvent } - The form's submit event.
+* @returns { boolean } `true` if the form is valid and may be submitted,
+* `false` if validation failed and submission was prevented.
+*/
 const validate = (e) => {
     // Hides all error elements on the page
     hideAllErrors();
@@ -236,7 +237,7 @@ const checkData = () => {
         }
     }
 
-    // Display the survey information
+    // Display the information
     displayData(
         name,
         email,
@@ -250,7 +251,7 @@ const checkData = () => {
         pickupDate
     );
 
-    // Reset the form 
+    // Reset form 
     document.getElementById("survey_form").reset();
 
     // Return focus to the field
@@ -272,7 +273,7 @@ const saveListData = () => {
  * Attaches the validation handler to the survey form
  * once the DOM has finished loading.
  *
- * @listens DOMContentLoaded
+ * 
  */
 // Attach the listener once the page has loaded
 document.addEventListener("DOMContentLoaded", () => {
