@@ -1,0 +1,99 @@
+/* CSS Reset */
+html,
+body,
+form,
+fieldset,
+legend,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+    background-color: #f7f9fa;
+    color: #111;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.error {
+    display: none;
+    color: red;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: #3c3b3b;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    padding-top: 0.5rem;
+}
+
+footer {
+    color: #fbf8f8;
+}
+
+body {
+    /* Step 1: Link your image */
+    background-image: url('images/abe_cunningham.jpg');
+
+    /* Step 2: Prevent the image from repeating like a grid */
+    background-repeat: no-repeat;
+
+    /* Step 3: Center the image vertically and horizontally */
+    background-position: center;
+
+    /* Step 4: Scale the image to cover the entire screen proportionally */
+    background-size: cover;
+
+    /* Step 5: Keep the background fixed while scrolling (Optional) */
+    background-attachment: fixed;
+
+    /* Fallback color if the image fails to load */
+    background-color: #f0f0f0;
+}
+
+.form-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 95%;
+    height: 150px;
+    font-size: 16px;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+
+}
