@@ -170,122 +170,118 @@ function setCookie(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + value + expires + "; path=/";
-    /**
-     * Retrieves the validated survey information.
-     */
-    const checkData = () => {
-
-        // Retrieve values from the form
-        let name = document.getElementById("name").value;
-
-        let email = document.getElementById("email").value;
-
-        let genre = document.getElementById("genre_of_drummer").value;
-
-        let bandName = document.getElementById("band_name").value;
-
-        let favoriteDrummer =
-            document.getElementById("favorite_drummer").value;
-
-        let message = document.getElementById("message").value;
-
-        let pickupDate = document.getElementById("pickup-date").value;
-
-        /*Creates the table elements and displays the information **/
-        const displayData = (
-            name,
-            email,
-            genre,
-            bandName,
-            favoriteDrummer,
-            message,
-            shell,
-            cymbalBrand,
-            cymbalTypes,
-            pickupDate
-        ) => {
-
-            // Get the table body
-            let tbody = document.getElementById("list");
-
-            // Create a new table row
-            let newTr = document.createElement("tr");
-
-            // Store survey responses
-            const values = [
-                name,
-                email,
-                genre,
-                bandName,
-                favoriteDrummer,
-                message,
-                shell,
-                cymbalBrand,
-                cymbalTypes,
-                pickupDate
-            ];
-
-            // Create table cells
-            for (const value of values) {
-
-                let newTd = document.createElement("td");
-
-                newTd.textContent = value;
-
-                newTr.appendChild(newTd);
-            }
-
-            // Add the row to the table
-            tbody.appendChild(newTr);
-
-            // Display the clear button
-            document.getElementById("clearbutton").style.display = "block";
-
-            // Save the table data
-            saveListData();
-        };
+}
 
 
-        /**
-         * Clears the survey results table.
-         */
-        const clearButton = () => {
+/**
+ * Deletes a browser cookie.
+ *
+ * @param {string} name - The cookie name.
+ */
+function deleteCookie(name) {
 
-            let tbody = document.getElementById("list");
+    document.cookie =
+        name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+}
 
-            // Remove all table rows
-            while (tbody.firstChild) {
-                tbody.removeChild(tbody.firstChild);
-            }
+/**
+ * Retrieves the validated survey information.
+ */
+const checkData = () => {
 
-            // Hide the clear button
-            document.getElementById("clearbutton").style.display = "none";
+    // Retrieve values from the form
+    let name = document.getElementById("name").value;
 
-            // Remove saved survey data
-            removeLocalStorage("surveyData");
-        };
+    let email = document.getElementById("email").value;
 
+    let genre = document.getElementById("genre_of_drummer").value;
 
-        /**
-         * Saves the table contents to LocalStorage.
-         */
-        const saveListData = () => {
+    let bandName = document.getElementById("band_name").value;
 
-            let list = document.getElementById("list");
+    let favoriteDrummer =
+        document.getElementById("favorite_drummer").value;
 
-            setLocalStorage("surveyData", list.innerHTML);
-        };
+    let message = document.getElementById("message").value;
+
+    let pickupDate = document.getElementById("pickup-date").value;
 
 
-        /**
-         * Attaches the validation handler to the survey form
-         * once the DOM has finished loading.
-         *
-         * @listens DOMContentLoaded
-         */
-        // Attach the listener once the page has loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            const form = document.getElementById("survey_form");
-            console.log("Form found:", form);
-            form.addEventListener("submit", validate);
-        });
+    // Retrieve selected drum shell
+    let shell = document.querySelector(
+        'input[name="shellType"]:checked'
+    ).value;
+
+
+    // Retrieve selected cymbal brand
+    let cymbalBrand = document.querySelector(
+        'input[name="cymbalBrand"]:checked'
+    ).value;
+
+
+    // Retrieve selected cymbal types
+    const cymbalTypes = [
+        "crash",
+        "ride",
+        "splash",
+        "china",
+        "clapstack"
+    ];
+
+    let selectedTypes = [];
+
+    for (const type of cymbalTypes) {
+
+        if (document.getElementById(type).checked) {
+
+            selectedTypes.push(
+                document.getElementById(type).value
+            );
+        }
+    }
+
+
+    // Display the survey information
+    displayData(
+        name,
+        email,
+        genre,
+        bandName,
+        favoriteDrummer,
+        message,
+        shell,
+        cymbalBrand,
+        selectedTypes.join(", "),
+        pickupDate
+    );
+
+
+    // Reset the form fields
+    document.getElementById("survey_form").reset();
+
+    // Return focus to the name field
+    document.getElementById("name").focus();
+};
+
+/**
+ * Saves the table contents to LocalStorage.
+ */
+const saveListData = () => {
+
+    let list = document.getElementById("list");
+
+    setLocalStorage("surveyData", list.innerHTML);
+};
+
+
+/**
+ * Attaches the validation handler to the survey form
+ * once the DOM has finished loading.
+ *
+ * @listens DOMContentLoaded
+ */
+// Attach the listener once the page has loaded
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("survey_form");
+    console.log("Form found:", form);
+    form.addEventListener("submit", validate);
+});
