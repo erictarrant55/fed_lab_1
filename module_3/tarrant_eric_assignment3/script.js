@@ -8,8 +8,8 @@
  * Hides any previously shown errors, then runs all validation checks.
  * If any check fails, the form submission is cancelled.
  *
- * @param { SubmitEvent } e - The form's submit event.
-    * @returns { boolean } `true` if the form is valid and may be submitted,
+ * @param { SubmitEvent } - The form's submit event.
+ * @returns { boolean } `true` if the form is valid and may be submitted,
  * `false` if validation failed and submission was prevented.
  */
 const validate = (e) => {
@@ -172,16 +172,15 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + value + expires + "; path=/";
 }
 
-
 /**
  * Deletes a browser cookie.
  *
- * @param {string} name - The cookie name.
+ * @param {string} name 
  */
 function deleteCookie(name) {
 
     document.cookie =
-        name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+        name + "=; expires=Thu, 01 Jan 2027:00:01 GMT; path=/";
 }
 
 /**
@@ -189,7 +188,7 @@ function deleteCookie(name) {
  */
 const checkData = () => {
 
-    // Retrieve values from the form
+    // Retrieve values 
     let name = document.getElementById("name").value;
 
     let email = document.getElementById("email").value;
@@ -204,19 +203,6 @@ const checkData = () => {
     let message = document.getElementById("message").value;
 
     let pickupDate = document.getElementById("pickup-date").value;
-
-
-    // Retrieve selected drum shell
-    let shell = document.querySelector(
-        'input[name="shellType"]:checked'
-    ).value;
-
-
-    // Retrieve selected cymbal brand
-    let cymbalBrand = document.querySelector(
-        'input[name="cymbalBrand"]:checked'
-    ).value;
-
 
     // Retrieve selected cymbal types
     const cymbalTypes = [
@@ -239,7 +225,6 @@ const checkData = () => {
         }
     }
 
-
     // Display the survey information
     displayData(
         name,
@@ -254,11 +239,10 @@ const checkData = () => {
         pickupDate
     );
 
-
-    // Reset the form fields
+    // Reset the form 
     document.getElementById("survey_form").reset();
 
-    // Return focus to the name field
+    // Return focus to the field
     document.getElementById("name").focus();
 };
 
