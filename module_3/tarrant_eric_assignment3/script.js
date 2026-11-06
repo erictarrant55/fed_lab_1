@@ -3,7 +3,15 @@
     October 29, 2026
     Eric Tarrant
  */
-
+/**
+ * Submit event handler that validates the survey form.
+ * Hides any previously shown errors, then runs all validation checks.
+ * If any check fails, the form submission is cancelled.
+ *
+ * @param { SubmitEvent } e - The form's submit event.
+    * @returns { boolean } `true` if the form is valid and may be submitted,
+ * `false` if validation failed and submission was prevented.
+ */
 const validate = (e) => {
     // Hides all error elements on the page
     hideAllErrors();
@@ -47,7 +55,7 @@ const formHasErrors = () => {
         }
     }
 
-    const regex = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const email = document.getElementById("email")
     let emailValue = email.value
 
@@ -145,7 +153,15 @@ const formFieldHasInput = (fieldElement) => {
 
     return true;
 }
-
+/**
+ * Sets a browser cookie.
+ *
+ * @param {string} name - The cookie name.
+ * @param {string} value - The cookie value (not URI-encoded by this function).
+ * @param {number} [days] - Number of days until the cookie expires.
+ *   If omitted, a session cookie is created.
+ * @returns {void}
+ */
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
@@ -154,11 +170,122 @@ function setCookie(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + value + expires + "; path=/";
-}
+    /**
+     * Retrieves the validated survey information.
+     */
+    const checkData = () => {
 
-// Attach the listener once the page has loaded
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("survey_form");
-    console.log("Form found:", form);
-    form.addEventListener("submit", validate);
-});
+        // Retrieve values from the form
+        let name = document.getElementById("name").value;
+
+        let email = document.getElementById("email").value;
+
+        let genre = document.getElementById("genre_of_drummer").value;
+
+        let bandName = document.getElementById("band_name").value;
+
+        let favoriteDrummer =
+            document.getElementById("favorite_drummer").value;
+
+        let message = document.getElementById("message").value;
+
+        let pickupDate = document.getElementById("pickup-date").value;
+
+        /*Creates the table elements and displays the information **/
+        const displayData = (
+            name,
+            email,
+            genre,
+            bandName,
+            favoriteDrummer,
+            message,
+            shell,
+            cymbalBrand,
+            cymbalTypes,
+            pickupDate
+        ) => {
+
+            // Get the table body
+            let tbody = document.getElementById("list");
+
+            // Create a new table row
+            let newTr = document.createElement("tr");
+
+            // Store survey responses
+            const values = [
+                name,
+                email,
+                genre,
+                bandName,
+                favoriteDrummer,
+                message,
+                shell,
+                cymbalBrand,
+                cymbalTypes,
+                pickupDate
+            ];
+
+            // Create table cells
+            for (const value of values) {
+
+                let newTd = document.createElement("td");
+
+                newTd.textContent = value;
+
+                newTr.appendChild(newTd);
+            }
+
+            // Add the row to the table
+            tbody.appendChild(newTr);
+
+            // Display the clear button
+            document.getElementById("clearbutton").style.display = "block";
+
+            // Save the table data
+            saveListData();
+        };
+
+
+        /**
+         * Clears the survey results table.
+         */
+        const clearButton = () => {
+
+            let tbody = document.getElementById("list");
+
+            // Remove all table rows
+            while (tbody.firstChild) {
+                tbody.removeChild(tbody.firstChild);
+            }
+
+            // Hide the clear button
+            document.getElementById("clearbutton").style.display = "none";
+
+            // Remove saved survey data
+            removeLocalStorage("surveyData");
+        };
+
+
+        /**
+         * Saves the table contents to LocalStorage.
+         */
+        const saveListData = () => {
+
+            let list = document.getElementById("list");
+
+            setLocalStorage("surveyData", list.innerHTML);
+        };
+
+
+        /**
+         * Attaches the validation handler to the survey form
+         * once the DOM has finished loading.
+         *
+         * @listens DOMContentLoaded
+         */
+        // Attach the listener once the page has loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("survey_form");
+            console.log("Form found:", form);
+            form.addEventListener("submit", validate);
+        });
