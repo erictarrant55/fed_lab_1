@@ -35,19 +35,19 @@ async function displayCyclingPath() {
 
         // Display the route information
         document.getElementById("routeName").textContent =
-            route.infrastructure_name || "Unnamed Route";
+            route.infrastructure_name || "";
 
         document.getElementById("routeType").textContent =
-            route.infrastructure_type || "Not available";
+            route.infrastructure_type || "";
 
         document.getElementById("roadLocation").textContent =
-            route.road_location || "Not available";
+            route.road_location || "";
 
         document.getElementById("routeLength").textContent =
-            route.length || "Not available";
+            route.length || "";
 
         document.getElementById("twoWayTravel").textContent =
-            route.two_way_travel || "Not available";
+            route.two_way_travel || "";
 
     } catch (error) {
         console.error("Error:", error);
