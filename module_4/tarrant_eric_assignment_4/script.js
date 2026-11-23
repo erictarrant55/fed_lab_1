@@ -8,47 +8,55 @@
 async function displayCyclingPath() {
     const container = document.getElementById("Container");
 
-    container.textContent = "Loading a random cycling route...";
+    document.getElementById("routeName").textContent = "Loading...";
 
     try {
-        const response = await fetch(
-            "https://data.winnipeg.ca/resource/kjd9-dvf5.json?$where=road_location IS NOT NULL&$order=infrastructure_name ASC&$limit=100"
-        );
+        const url = "https://data.winnipeg.ca/resource/kjd9-dvf5.json?$limit=100";
+
+        const response = await fetch(url);
 
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error("HTTP error: " + response.status);
         }
 
         const cycling = await response.json();
 
-        if (cycling.length === 0) {
-            container.textContent = "No cycling routes found.";
-            return;
+        console.log("API data:", cycling);
+
+        if (!Array.isArray(cycling) || cycling.length === 0) {
+            throw new Error("No cycling routes were returned.");
         }
 
+        // Pick a random cycling route
         const randomIndex = Math.floor(Math.random() * cycling.length);
         const route = cycling[randomIndex];
 
-        container.textContent = "";
+        console.log("Selected route:", route);
 
-        const card = document.createElement("article");
-        card.className = "route-card";
+        // Display the route information
+        document.getElementById("routeName").textContent =
+            route.infrastructure_name || "Unnamed Route";
 
-        card.innerHTML = `
-            <h2>${route.infrastructure_name || "Unnamed Route"}</h2>
-            <p><strong>Infrastructure Type:</strong> ${route.infrastructure_type || "Not available"}</p>
-            <p><strong>Road Location:</strong> ${route.road_location || "Not available"}</p>
-            <p><strong>Length:</strong> ${route.length || "Not available"}</p>
-            <p><strong>Two-Way Travel:</strong> ${route.two_way_travel || "Not available"}</p>
-        `;
+        document.getElementById("routeType").textContent =
+            route.infrastructure_type || "Not available";
 
-        container.appendChild(card);
+        document.getElementById("roadLocation").textContent =
+            route.road_location || "Not available";
+
+        document.getElementById("routeLength").textContent =
+            route.length || "Not available";
+
+        document.getElementById("twoWayTravel").textContent =
+            route.two_way_travel || "Not available";
 
     } catch (error) {
-        container.textContent = "Unable to load a cycling route. Please try again.";
-        console.error("Error fetching cycling data:", error);
+        console.error("Error:", error);
+        container.querySelector(".route-card").textContent =
+            "Error: " + error.message;
     }
 }
 
-// Run when the button is clicked
-document.getElementById("routeButton").addEventListener("click", displayCyclingPath);
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("routeButton")
+        .addEventListener("click", displayCyclingPath);
+});
