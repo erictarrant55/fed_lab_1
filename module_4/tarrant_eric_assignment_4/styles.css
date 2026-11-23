@@ -1,0 +1,19 @@
+body {
+    min-height: 10vh;
+    margin: 0;
+    padding: 24px;
+    display: grid;
+    place-items: center;
+    background: #f4f4f1;
+    color: #000000;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    font-style: bold;
+}
+
+
+main {
+    flex: 1;
+}
