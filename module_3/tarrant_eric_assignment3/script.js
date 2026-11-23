@@ -4,18 +4,29 @@
     Eric Tarrant
  */
 
+/**
+* Submit event handler that validates the survey form.
+* Hides any previously shown errors, then runs all validation checks.
+* If any check fails, the form submission is cancelled.
+*
+* @param { SubmitEvent } - The form's submit event.
+* @returns { boolean } `true` if the form is valid and may be submitted,
+* `false` if validation failed and submission was prevented.
+*/
 const validate = (e) => {
     // Hides all error elements on the page
     hideAllErrors();
 
     // Determine if the form has errors
     if (formHasErrors()) {
+        console.log("Validation failed");
         // Prevents the form from submitting
         e.preventDefault();
         return false;
     }
-
+    console.log("Validation passed");
     return true;
+
 }
 
 
@@ -34,6 +45,7 @@ const formHasErrors = () => {
         let textField = document.getElementById(field)
 
         if (!formFieldHasInput(textField)) {
+            console.log("Missing input:", field);
             document.getElementById(field + "_error").style.display = "block"
 
             if (!errorFlag) {
@@ -43,8 +55,12 @@ const formHasErrors = () => {
             errorFlag = true
         }
     }
-    const regex = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
-    let emailValue = document.getElementById("email").value
+
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const email = document.getElementById("email")
+    let emailValue = email.value
+
+    console.log("Email tested:", emailValue, "valid:", regex.test(emailValue));
 
     if (!regex.test(emailValue)) {
         document.getElementById("email_error").style.display = "block"
@@ -67,10 +83,22 @@ const formHasErrors = () => {
     }
 
     if (!drumShellChecked) {
+        console.log("No drum shell selected");
         document.getElementById("drum_shell_error").style.display = "block"
         errorFlag = true
     }
+    const genre = document.getElementById("genre_of_drummer")
 
+    if (genre.value === "") {
+        console.log("No genre selected");
+        document.getElementById("genre_of_drummer_error").style.display = "block"
+
+        if (!errorFlag) {
+            genre.focus()
+        }
+
+        errorFlag = true
+    }
     const cymbalCompany = ["zildjian", "sabian", "meinl", "istanbul", "paiste"]
     let cymbalCompanyChecked = false
 
@@ -81,6 +109,7 @@ const formHasErrors = () => {
     }
 
     if (!cymbalCompanyChecked) {
+        console.log("No cymbal company selected");
         document.getElementById("cymbal_company_error").style.display = "block"
         errorFlag = true
     }
@@ -95,14 +124,19 @@ const formHasErrors = () => {
     }
 
     if (!cymbalBrandTypeChecked) {
+        console.log("No cymbal type selected");
         document.getElementById("cymbal_error").style.display = "block"
         errorFlag = true
     }
+
     const dateField = document.getElementById("pickup-date")
+
+    console.log("Date check:", dateField.value, "min:", dateField.min, "max:", dateField.max);
 
     if (dateField.value === "" ||
         dateField.value < dateField.min ||
         dateField.value > dateField.max) {
+        console.log("Date invalid");
         document.getElementById("date_error").style.display = "block"
 
         if (!errorFlag) {
@@ -112,6 +146,7 @@ const formHasErrors = () => {
         errorFlag = true
     }
 
+    console.log("formHasErrors result:", errorFlag);
     return errorFlag
 }
 
@@ -130,7 +165,15 @@ const formFieldHasInput = (fieldElement) => {
 
     return true;
 }
-
+/**
+ * Sets a browser cookie.
+ *
+ * @param {string} name - The cookie name.
+ * @param {string} value - The cookie value (not URI-encoded by this function).
+ * @param {number} [days] - Number of days until the cookie expires.
+ *   If omitted, a session cookie is created.
+ * @returns {void}
+ */
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
@@ -141,7 +184,100 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + value + expires + "; path=/";
 }
 
+/**
+ * Deletes a browser cookie.
+ *
+ * @param {string} name 
+ */
+function deleteCookie(name) {
+
+    document.cookie =
+        name + "=; expires=Thu, 01 Jan 2027:00:01 GMT; path=/";
+}
+
+/**
+ * Retrieves the validated survey information.
+ */
+const checkData = () => {
+
+    // Retrieve values 
+    let name = document.getElementById("name").value;
+
+    let email = document.getElementById("email").value;
+
+    let genre = document.getElementById("genre_of_drummer").value;
+
+    let bandName = document.getElementById("band_name").value;
+
+    let favoriteDrummer =
+        document.getElementById("favorite_drummer").value;
+
+    let message = document.getElementById("message").value;
+
+    let pickupDate = document.getElementById("pickup-date").value;
+
+    // Retrieve selected cymbal types
+    const cymbalTypes = [
+        "crash",
+        "ride",
+        "splash",
+        "china",
+        "clapstack"
+    ];
+
+    let selectedTypes = [];
+
+    for (const type of cymbalTypes) {
+
+        if (document.getElementById(type).checked) {
+
+            selectedTypes.push(
+                document.getElementById(type).value
+            );
+        }
+    }
+
+    // Display the information
+    displayData(
+        name,
+        email,
+        genre,
+        bandName,
+        favoriteDrummer,
+        message,
+        shell,
+        cymbalBrand,
+        selectedTypes.join(", "),
+        pickupDate
+    );
+
+    // Reset form 
+    document.getElementById("survey_form").reset();
+
+    // Return focus to the field
+    document.getElementById("name").focus();
+};
+
+/**
+ * Saves the table contents to LocalStorage.
+ */
+const saveListData = () => {
+
+    let list = document.getElementById("list");
+
+    setLocalStorage("surveyData", list.innerHTML);
+};
+
+
+/**
+ * Attaches the validation handler to the survey form
+ * once the DOM has finished loading.
+ *
+ * 
+ */
 // Attach the listener once the page has loaded
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("survey_form").addEventListener("submit", validate);
+    const form = document.getElementById("survey_form");
+    console.log("Form found:", form);
+    form.addEventListener("submit", validate);
 });
