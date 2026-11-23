@@ -1,35 +1,42 @@
-let commonName = 'Ash';
-const apiUrl = 'https://data.winnipeg.ca/api/v3/views/kjd9-dvf5/query.json +
-    `$where=common_name LIKE '%${commonName}%'` +
-    '&$order=diameter_at_breast_height DESC' +
-    '&$limit=100';
-const encodedURL = encodeURI(apiUrl);
 
-async function displayMap() {
+async function displayCyclingPath() {
     const container = document.getElementById("Container");
-    container.textContent = "Loading...";
+
+    container.textContent = "Loading cycling paths...";
 
     try {
-        const response = await fetch("https://data.winnipeg.ca/api/v3/views/kjd9-dvf5/query.json");
+        const response = await fetch(
+            "https://data.winnipeg.ca/resource/kjd9-dvf5.json?$limit=20"
+        );
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const cycling = await response.json();
-        if (cycling.status !== "success" || typeof cycling.message !== "string") {
-            throw new Error("The API returned an invalid cycling map image.");
+
+        if (!Array.isArray(cycling) || cycling.length === 0) {
+            throw new Error("No cycling data was returned.");
         }
 
-        const image = document.createElement("img");
-        image.src = cycling.message;
-        image.alt = "A random cycling";
-        image.addEventListener("error", () => {
-            container.textContent = "Could not load the cycling map image. Please try again.";
+        const list = document.createElement("ul");
+
+        cycling.forEach((path) => {
+            const item = document.createElement("li");
+
+            item.textContent = JSON.stringify(path);
+
+            list.appendChild(item);
         });
-        container.replaceChildren(image);
+
+        container.replaceChildren(list);
+
     } catch (error) {
-        console.error("Error fetching cycling map image:", error);
-        container.textContent = "Unable to load a cycling image. Please try again.";
+        console.error("Error fetching cycling data:", error);
+
+        container.textContent =
+            "Unable to load cycling paths. Please try again.";
     }
 }
+
+displayCyclingPath();
