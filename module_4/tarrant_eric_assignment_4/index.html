@@ -4,21 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City of Winnipeg Data Portal</title>
+    <title>Winnipeg Cycling Network</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 
-<h1>Winnipeg Cycling Network Map</h1>
-
 <body>
-    <main id="dogFactApp">
+    <header>
+        <h1>Winnipeg Cycling Network</h1>
+        <p>Explore cycling routes throughout Winnipeg!</p>
+    </header>
 
-        <p>Click the button to see the cycling network map of Winnipeg.</p>
-        <button type="button" onclick="displayCyclingPath()">Get Route</button>
-        <div id="Container">
-            <p>Your photo will appear here.</p>
-        </div>
+    <main>
+        <section>
+            <h2>Discover a Random Cycling Route</h2>
+            <p>
+                Click the button below to discover a randomly selected
+                cycling route from the City of Winnipeg.
+            </p>
+
+            <button id="routeButton" type="button">
+                Show Random Cycling Route
+            </button>
+        </section>
+
+        <section id="routeSection" aria-label="Random cycling route">
+            <div id="Container" aria-live="polite">
+                <article class="route-card">
+                    <h2 id="routeName">Your random route will appear here</h2>
+
+                    <p>
+                        <strong>Infrastructure Type:</strong>
+                        <span id="routeType">Not available</span>
+                    </p>
+
+                    <p>
+                        <strong>Road Location:</strong>
+                        <span id="roadLocation">Not available</span>
+                    </p>
+
+                    <p>
+                        <strong>Length:</strong>
+                        <span id="routeLength">Not available</span>
+                    </p>
+
+                    <p>
+                        <strong>Two-Way Travel:</strong>
+                        <span id="twoWayTravel">Not available</span>
+                    </p>
+                </article>
+            </div>
+        </section>
     </main>
-    <script src="script.js"></script>
+
+    <footer>
+        <p>Data from City of Winnipeg Open Data Portal.</p>
+    </footer>
 </body>
 
 </html>

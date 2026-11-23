@@ -1,12 +1,18 @@
 
+/*
+    Winnipeg Cycling Routes
+    Eric Tarrant
+    November 23, 2026
+*/
+
 async function displayCyclingPath() {
     const container = document.getElementById("Container");
 
-    container.textContent = "Loading cycling paths...";
+    container.textContent = "Loading a random cycling route...";
 
     try {
         const response = await fetch(
-            "https://data.winnipeg.ca/resource/kjd9-dvf5.json?$limit=20"
+            "https://data.winnipeg.ca/resource/kjd9-dvf5.json?$where=road_location IS NOT NULL&$order=infrastructure_name ASC&$limit=100"
         );
 
         if (!response.ok) {
@@ -15,28 +21,34 @@ async function displayCyclingPath() {
 
         const cycling = await response.json();
 
-        if (!Array.isArray(cycling) || cycling.length === 0) {
-            throw new Error("No cycling data was returned.");
+        if (cycling.length === 0) {
+            container.textContent = "No cycling routes found.";
+            return;
         }
 
-        const list = document.createElement("ul");
+        const randomIndex = Math.floor(Math.random() * cycling.length);
+        const route = cycling[randomIndex];
 
-        cycling.forEach((path) => {
-            const item = document.createElement("li");
+        container.textContent = "";
 
-            item.textContent = JSON.stringify(path);
+        const card = document.createElement("article");
+        card.className = "route-card";
 
-            list.appendChild(item);
-        });
+        card.innerHTML = `
+            <h2>${route.infrastructure_name || "Unnamed Route"}</h2>
+            <p><strong>Infrastructure Type:</strong> ${route.infrastructure_type || "Not available"}</p>
+            <p><strong>Road Location:</strong> ${route.road_location || "Not available"}</p>
+            <p><strong>Length:</strong> ${route.length || "Not available"}</p>
+            <p><strong>Two-Way Travel:</strong> ${route.two_way_travel || "Not available"}</p>
+        `;
 
-        container.replaceChildren(list);
+        container.appendChild(card);
 
     } catch (error) {
+        container.textContent = "Unable to load a cycling route. Please try again.";
         console.error("Error fetching cycling data:", error);
-
-        container.textContent =
-            "Unable to load cycling paths. Please try again.";
     }
 }
 
-displayCyclingPath();
+// Run when the button is clicked
+document.getElementById("routeButton").addEventListener("click", displayCyclingPath);
