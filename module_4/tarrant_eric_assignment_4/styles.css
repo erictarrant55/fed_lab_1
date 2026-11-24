@@ -8,12 +8,11 @@ body {
     color: #000000;
     font-family: Arial, sans-serif;
     box-sizing: border-box;
-
 }
 
 main {
-    width: 600px;
-    height: 400px;
+    width: 100%;
+    max-width: 800px;
     padding: 24px;
     border: 2px solid #000000;
     border-radius: 10px;
@@ -21,7 +20,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 150px;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -35,28 +34,26 @@ h2 {
     padding: 20px;
 }
 
-
-#routeSection,
-#Container,
-.route-card {
+section {
     width: 100%;
     text-align: center;
 }
 
-#Container {
-    height: 250px;
-    overflow-y: auto;
-    scrollbar-width: none;
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-#routeName {
-    margin: 0 0 16px 0;
-    min-height: 56px;
-}
-
-.route-card p {
-    margin: 0 0 12px 0;
-    min-height: 24px;
+.search input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 button {
@@ -69,6 +66,31 @@ button {
     background: #1613c9;
     color: white;
     cursor: pointer;
+}
+
+input:focus-visible,
+button:focus-visible {
+    outline: 3px solid #f2a900;
+    outline-offset: 2px;
+}
+
+#message {
+    min-height: 24px;
+    margin: 16px 0;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+
+th {
+    position: sticky;
+    top: 0;
+    background: #d7dce6;
 }
 
 footer {
