@@ -16,33 +16,44 @@
 
     <main>
         <section>
-            <h2>Discover a Random Cycling Route</h2>
+            <h2>Search Cycling Routes</h2>
 
-
-            <button id="routeButton" type="button">
-                Click for route
-            </button>
-        </section>
-
-        <section id="routeSection" aria-label="Random cycling route">
-            <div id="Container" aria-live="polite">
-                <article class="route-card">
-                    <h2 id="routeName">Route Below</h2>
-                    <p>Infrastructure Type:
-                        <span id="routeType"></span>
-                    </p>
-                    <p>Road Location:
-                        <span id="roadLocation"></span>
-                    </p>
-                    <p>Length:
-                        <span id="routeLength"></span>
-                    </p>
-                    <p>Two-Way Travel:
-                        <span id="twoWayTravel"></span>
-                    </p>
-                </article>
+            <div class="search">
+                <label for="searchInput">Search by route name</label>
+                <input type="text" id="searchInput" placeholder="e.g. Assiniboine">
+                <button id="searchButton" type="button">Search</button>
             </div>
         </section>
+
+        <section aria-label="Search results">
+            <p id="message" role="status"></p>
+
+            <div class="table-wrap">
+                <table>
+                    <caption>Cycling route results</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Length</th>
+                            <th scope="col">Two-way</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <template id="rowTemplate">
+            <tr>
+                <td data-field="infrastructure_name"></td>
+                <td data-field="infrastructure_type"></td>
+                <td data-field="road_location"></td>
+                <td data-field="length"></td>
+                <td data-field="two_way_travel"></td>
+            </tr>
+        </template>
     </main>
 
     <footer>

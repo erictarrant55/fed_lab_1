@@ -5,58 +5,106 @@
     November 23, 2026
 */
 
-async function displayCyclingPath() {
-    const container = document.getElementById("Container");
+// async function displayCyclingPath() {
+//     const container = document.getElementById("Container");
 
-    document.getElementById("routeName").textContent = "Loading...";
+//     document.getElementById("routeName").textContent = "Loading...";
+
+//     try {
+//         const url = "https://data.winnipeg.ca/resource/kjd9-dvf5.json?$limit=100";
+
+//         const response = await fetch(url);
+
+//         if (!response.ok) {
+//             throw new Error("HTTP error: " + response.status);
+//         }
+
+//         const cycling = await response.json();
+
+//         console.log("API data:", cycling);
+
+//         if (!Array.isArray(cycling) || cycling.length === 0) {
+//             throw new Error("No cycling routes were returned.");
+//         }
+
+//         // Pick a random cycling route
+//         const randomIndex = Math.floor(Math.random() * cycling.length);
+//         const route = cycling[randomIndex];
+
+//         console.log("Selected route:", route);
+
+//         // Display the route information
+//         document.getElementById("routeName").textContent =
+//             route.infrastructure_name || "";
+
+//         document.getElementById("routeType").textContent =
+//             route.infrastructure_type || "";
+
+//         document.getElementById("roadLocation").textContent =
+//             route.road_location || "";
+
+//         document.getElementById("routeLength").textContent =
+//             route.length || "";
+
+//         document.getElementById("twoWayTravel").textContent =
+//             route.two_way_travel || "";
+
+//     } catch (error) {
+//         console.error("Error:", error);
+//         container.querySelector(".route-card").textContent =
+//             "Error: " + error.message;
+//     }
+// }
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     document.getElementById("routeButton")
+//         .addEventListener("click", displayCyclingPath);
+// });
+
+async function searchRoutes(term) {
+    const message = document.getElementById("message");
+    const tbody = document.getElementById("resultsBody");
+
+    message.textContent = "Loading...";
+    tbody.innerHTML = "";
 
     try {
-        const url = "https://data.winnipeg.ca/resource/kjd9-dvf5.json?$limit=100";
+        const safeTerm = term.replace(/'/g, "''");
+        const where = `lower(infrastructure_name) LIKE lower('%${safeTerm}%')`;
+        const url = "https://data.winnipeg.ca/resource/kjd9-dvf5.json" +
+            `?$where=${encodeURIComponent(where)}` +
+            `&$order=infrastructure_name&$limit=100`;
 
         const response = await fetch(url);
-
         if (!response.ok) {
             throw new Error("HTTP error: " + response.status);
         }
 
-        const cycling = await response.json();
+        const routes = await response.json();
 
-        console.log("API data:", cycling);
-
-        if (!Array.isArray(cycling) || cycling.length === 0) {
-            throw new Error("No cycling routes were returned.");
+        if (routes.length === 0) {
+            message.textContent = `No routes found matching "${term}".`;
+            return;
         }
 
-        // Pick a random cycling route
-        const randomIndex = Math.floor(Math.random() * cycling.length);
-        const route = cycling[randomIndex];
+        const template = document.getElementById("rowTemplate");
 
-        console.log("Selected route:", route);
+        routes.forEach(r => {
+            const row = template.content.cloneNode(true);
+            row.querySelectorAll("td").forEach(td => {
+                td.textContent = r[td.dataset.field] || "";
+            });
+            tbody.appendChild(row);
+        });
 
-        // Display the route information
-        document.getElementById("routeName").textContent =
-            route.infrastructure_name || "";
-
-        document.getElementById("routeType").textContent =
-            route.infrastructure_type || "";
-
-        document.getElementById("roadLocation").textContent =
-            route.road_location || "";
-
-        document.getElementById("routeLength").textContent =
-            route.length || "";
-
-        document.getElementById("twoWayTravel").textContent =
-            route.two_way_travel || "";
+        message.textContent = `${routes.length} route(s) found.`;
 
     } catch (error) {
         console.error("Error:", error);
-        container.querySelector(".route-card").textContent =
-            "Error: " + error.message;
+        message.textContent = "Sorry, the routes could not be loaded. Please try again.";
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("routeButton")
-        .addEventListener("click", displayCyclingPath);
+document.getElementById("searchButton").addEventListener("click", () => {
+    searchRoutes(document.getElementById("searchInput").value.trim());
 });
