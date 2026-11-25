@@ -1,11 +1,8 @@
-
 /*
     Winnipeg Cycling Routes
     Eric Tarrant
     November 23, 2026
 */
-
-
 
 async function searchRoutes() {
     const search = document.getElementById("searchInput").value.trim();
@@ -57,6 +54,3 @@ async function searchRoutes() {
 }
 
 document.getElementById("searchButton").addEventListener("click", searchRoutes);
-
-
-
